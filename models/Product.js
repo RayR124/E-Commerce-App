@@ -11,7 +11,7 @@ Product.init(
   {
     //id
     id: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
@@ -31,7 +31,7 @@ Product.init(
     },
     //qty in stock
     stock: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 10,
       validate: {
@@ -40,7 +40,7 @@ Product.init(
     },
     //category_id
     category_id: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       references: {
         model: "category",
         key: "id",
