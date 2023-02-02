@@ -25,25 +25,25 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-Tag.create({
-  tag_name: req.body.tag_name,
-},
-{
-  where: {
-    id: req.params.id,
-  }
-})
+  Tag.create({
+    tag_name: req.body.tag_name,
+  },
+    {
+      where: {
+        id: req.params.id,
+      }
+    })
 });
 
 router.put('/:id', (req, res) => {
   Tag.update({
     tag_name: req.body.tag_name,
   },
-  {
-    where: {
-      id: req.params.id,
-    }
-  })
+    {
+      where: {
+        id: req.params.id,
+      }
+    })
 });
 
 router.delete('/:id', (req, res) => {
