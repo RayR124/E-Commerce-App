@@ -16,12 +16,12 @@ router.get('/', (req, res) => {
 // get one product
 router.get('/:id', (req, res) => {
   Product.findOne({
+    include: {
+      model: Product,
+      attributes: ["id", "product_name", "price", "stock", "category_id"],
+    },
     where: {
       id: req.params.id,
-      include: {
-        model: Product,
-        attributes: ["id", "product_name", "price", "stock", "category_id"],
-      }
     }
   })
 });
