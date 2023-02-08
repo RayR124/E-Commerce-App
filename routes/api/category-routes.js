@@ -15,12 +15,12 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const results = await Category.findOne({
+    include: {
+      model: Product,
+      attributes: ["id", "product_name", "price", "stock", "category_id"],
+    },
     where: {
       id: req.params.id,
-      include: {
-        model: Product,
-        attributes: ["id", "product_name", "price", "stock", "category_id"],
-      }
     }
   })
   res.status(200).json(results);
