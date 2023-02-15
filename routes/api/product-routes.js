@@ -4,30 +4,33 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // ./api/products
 
 // gets all products
-router.get('/', (req, res) => {
-  Product.findAll({
+router.get('/', async (req, res) => {
+const product = await Product.findAll({
     include: {
-      model: Product,
-      attributes: ["id", "product_name", "price", "stock", "category_id"],
+      model: Category,
+      //attributes: ["id", "product_name", "price", "stock", "category_id"],
     }
   })
+  res.json(product);
+
 });
 
 // gets one product
-router.get('/:id', (req, res) => {
-  Product.findOne({
+router.get('/:id', async (req, res) => {
+ const product = await Product.findOne({
     include: {
-      model: Product,
-      attributes: ["id", "product_name", "price", "stock", "category_id"],
+      model: Category,
+      //attributes: ["id", "product_name", "price", "stock", "category_id"],
     },
     where: {
       id: req.params.id,
     }
-  })
+  }) 
+  res.json(product)
 });
 
 // creates a new product
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -36,7 +39,7 @@ router.post('/', (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
-  Product.create({
+  await Product.create({
     product_name: req.body.product_name,
     price: req.body.price,
     stock: req.body.stock,
@@ -64,9 +67,9 @@ router.post('/', (req, res) => {
 });
 
 // updates a product
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   // update product data
-  Product.update(req.body, {
+  await Product.update(req.body, {
     where: {
       id: req.params.id,
     },
@@ -106,13 +109,14 @@ router.put('/:id', (req, res) => {
 });
 
 // delets an existing product
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   // delete one product by its 'id' value
-  Product.destroy({
+ await Product.destroy({
     where: {
       id: req.params.id,
     }
   })
+  res.sendStatus(200);
 });
 
 module.exports = router;
