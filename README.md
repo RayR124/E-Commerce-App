@@ -14,11 +14,13 @@ E-Commerce on the back-end for challenge 13
 
 ## Installation
 
-- N/A 
+- N/A
 
 ## Usage
 
 - Simply clone my GitHub Repository at https://github.com/RayR124/E-Commerce-App and make sure to have node, MySQL, and Sequelize on your system. This was made with Insomnia, but any other like-software will work just fine.
+
+- You can visit [HERE](https://drive.google.com/file/d/1n8Ojjk2NMXZffvrHc_tFHSneZQTBHSpM/view) to view a walkthrough tutorial of this app in action.
 
 ## Credits
 
